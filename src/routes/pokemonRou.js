@@ -3,9 +3,9 @@ const {allPokemons} = require('../controllers/allPokemones');
 const router = Router();
 const newPokemons = require('../controllers/createPokemon')
 
-router.get('/name', async (req,res) => {
+router.get('/', async (req,res) => {
+    const {name} = req.query
     try {
-        const {name} = req.query
         const pokemons = await allPokemons()
         if(name){
             const select = await pokemons.filter((pok) => pok.name.toLowerCase().startsWith(name.toLowerCase()))
