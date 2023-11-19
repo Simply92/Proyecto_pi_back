@@ -1,12 +1,15 @@
 const axios = require("axios");
 const { Router } = require("express");
 const { Type } = require("../db.js");
+const dotenv = require("dotenv");
+dotenv.config()
+const urlApi = process.env.API_URL
 
 const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    const apiResponse = await axios.get("https://pokeapi.co/api/v2/type");
+    const apiResponse = await axios.get(`${urlApi}/type`);
     const apiTypes = apiResponse.data.results.map((type) => type.name);
 
     // Obtener tipos existentes en la base de datos

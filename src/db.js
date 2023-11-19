@@ -2,10 +2,17 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+// const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const dbDeploy = process.env.DB_DATABASE
 
-const sequelize = new Sequelize(
-   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
+// const sequelize = new Sequelize(
+//    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
+//    {
+//       logging: false, // set to console.log to see the raw SQL queries
+//       native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+//    }
+// );
+const sequelize = new Sequelize(dbDeploy,
    {
       logging: false, // set to console.log to see the raw SQL queries
       native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -43,11 +50,11 @@ const {Pokemon, Type} = sequelize.models;
 
 Pokemon.belongsToMany(Type, {
    through: "TypePokemon"
- },{ timestamps: false })
+ , timestamps: false })
  
  Type.belongsToMany(Pokemon, {
    through: "TypePokemon"
- },{ timestamps: false })
+ , timestamps: false })
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
