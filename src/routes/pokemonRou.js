@@ -3,7 +3,7 @@ const {allPokemons} = require('../controllers/allPokemones');
 const router = Router();
 const newPokemons = require('../controllers/createPokemon')
 
-router.get('/', async (req,res) => {
+router.get('/name', async (req,res) => {
     try {
         const {name} = req.query
         const pokemons = await allPokemons()

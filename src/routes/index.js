@@ -9,7 +9,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.use('/pokemons', pokemonRou)
 router.use('/pokemons/:id', pokemonRou)
-router.use('/pokemons/?name=', pokemonRou)
+router.use('/pokemons/name/?name=', pokemonRou)
 router.use('/types', typesRou)
 
 
