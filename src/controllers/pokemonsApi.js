@@ -6,7 +6,7 @@ const urlApi = process.env.API_URL
 const pokapiInfo = async ()=>{
   try {
     // const pokemones =  await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=200");
-    const pokemones =  await axios.get(`${urlApi}/pokemon?offset=0&limit=200`);  //obtine la lista de pokemon hasta el pj 200
+    const pokemones =  await axios.get(`${urlApi}/pokemon?offset=0&limit=150`);  //obtine la lista de pokemon hasta el pj 200
     const pokemonUrl = pokemones.data.results //extrae la url de cada pokemon 
     const pokemonInfo = await axios.all( // realizo multiples peticiones simultaneas para traer la info que necesito de cada pokemon
       pokemonUrl.map(async (poke) =>{
