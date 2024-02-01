@@ -5,6 +5,9 @@ const getDbInfo = async () => {
       const results = await Pokemon.findAll({ //TRAERME TODO LO DE LA TABLA POKEMON, INCLUIDA LA RELACION CON TYPE
           include:{
               model: Type,
+              through: {
+                attributes: [],
+                },
           }
       })
       const pokemonDb = results.map((pokemon) => { //transforma para que cada pokemon tenga un array con sus types

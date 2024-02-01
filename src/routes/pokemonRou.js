@@ -24,8 +24,8 @@ router.get('/', async (req,res) => {
 })
 
 router.get('/:id', async (req,res) => {
+    const {id} = req.params;
     try {
-        const {id} = req.params;
         const listPokemons = await allPokemons()
         if(id){
             const selectPoke = await listPokemons.filter((pok) => pok.id == id)
